@@ -39,7 +39,7 @@ Future<void> guildInfoCommand(CommandContext ctx,String content) async {
     inline: true)
   ..addField(
     name: 'Owner',
-    content: guild?.owner?.username,
+    content: 'x',
     inline: true)
   ..addField(
     name: 'Members',
@@ -59,11 +59,11 @@ Future<void> guildInfoCommand(CommandContext ctx,String content) async {
     inline: true)
   ..addField(
     name: 'Roles (${roles?.count})',
-    content: '${roles?.values.join(",")}',
+    content: '${roles?.values.join(",").replaceAll('@', '').replaceAll('everyone', '').replaceFirst(',', '')}',
     inline: false)
   ..addField(
     name: 'Custom Emojis ()',
-    content: '',
+    content: 'uwu',
     inline: false);
 
   await ctx.reply(embed: embed);
