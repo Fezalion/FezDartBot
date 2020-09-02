@@ -1,7 +1,3 @@
-import 'dart:async';
-import 'dart:io';
-import 'dart:math';
-
 import 'package:dotenv/dotenv.dart' show env,load;
 import 'package:nyxx/nyxx.dart';
 import 'package:nyxx_commander/commander.dart';
@@ -26,6 +22,5 @@ void main() async {
   commander.registerCommandGroup(OwnerCommands().group);
   commander.registerCommandGroup(GeneralCommands().group);
   commander.registerCommandGroup(InfoCommands().group);
-
 }
 

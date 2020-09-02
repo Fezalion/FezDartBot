@@ -13,7 +13,7 @@ class InfoCommands {
     ..registerSubCommand('guild', guildInfoCommand)
     ..registerSubCommand('user', userInfoCommand)
 
-    ..registerDefaultCommand(guildInfoCommand2);
+    ..registerDefaultCommand((context, message) => context.reply(content: 'oof'));
 }
 
 Future<void> guildInfoCommand(CommandContext ctx,String content) async {
@@ -21,7 +21,7 @@ Future<void> guildInfoCommand(CommandContext ctx,String content) async {
   final curuser = ctx.client.self;
   final formatter = DateFormat('dd.MM.yyyy hh:mm');
   final roles = guild?.roles;
-
+  final emojis = guild?.emojis;
   final embed = EmbedBuilder()
   ..addAuthor((author) {
     author.name = curuser.tag;
@@ -59,12 +59,9 @@ Future<void> guildInfoCommand(CommandContext ctx,String content) async {
     inline: true)
   ..addField(
     name: 'Roles (${roles?.count})',
-    content: '${roles?.values.join(",").replaceAll('@', '').replaceAll('everyone', '').replaceFirst(',', '')}',
-    inline: false)
-  ..addField(
-    name: 'Custom Emojis ()',
-    content: 'uwu',
+    content: '**Custom Emojis (${emojis?.count})** ',
     inline: false);
+
 
   await ctx.reply(embed: embed);
 }
